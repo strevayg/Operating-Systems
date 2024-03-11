@@ -1,3 +1,6 @@
+/* (c) Gabby Strevay 2023
+ * Additional program for hw1.c
+*/
 #include <stdio.h>
 #include <unistd.h>
 
