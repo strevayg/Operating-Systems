@@ -24,17 +24,14 @@ int main()
     
     threadreturn= pthread_create(&tid, NULL, threadfunct, &letter);
     if (threadreturn == 0) //returns 0 if successful 
-    {
         printf("main: successfully created a new thread with TID of %lu\n", tid);
-    }
     else //it returns an error number
         printf("Damn: %s", strerror(threadreturn) );
    
     threadreturn=pthread_join(tid,NULL); //wait for thread to exit
     if (threadreturn != 0) //returns 0 if successful 
-    {
         printf("Damn: %s", strerror(threadreturn) );
-    } //else it was successful and dnm
+    //else it was successful 
     printf("main: second thread has terminated, main will now exit\n");
     return 0;
 }
