@@ -13,22 +13,19 @@ int main()
 {
     pid_t  pid;  
     int num = 1; //using to increment for the 3 childs
-     for (num=1; num <4; num++)
-    {
+    for (num=1; num <4; num++) {
         pid= fork();
         if (pid < 0)
             printf("FAILED FORK! NO CHILD CREATED!\n");
         else if (pid > 0) //parent execution 
             printf("Parent, my pid is %d: Spawned child #%d whose pid is %d\n", getpid(),num, pid);
-        else //  pid == 0 child execution
-        {
+        //  pid == 0 child execution
+        else {
             printf("I am child #%d, my pid is %d; my parent's pid is %d\n", num, getpid(), getppid());
             if (num==2) 
-            {
                 execv("child2.exe", NULL);
-            }
             break;
-       }
+        }
     }
 return 0;
 }
