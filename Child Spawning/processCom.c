@@ -21,7 +21,7 @@ int main()
     //0666 sets the access permissions of the memory segment 
     //IPC_CREAT tells the system to create a new memory segment for the shared memory
     shm_ID = shmget(key, 4,IPC_CREAT | 0666);
-    if(shm_ID == -1)//error occurred
+    if (shm_ID == -1)//error occurred
         printf("Damn: %s", strerror(shm_ID) );
     
     printf("Parent: Successfully created shared memory segment with shared memory ID #%d (not segment #)\n", shm_ID);
@@ -30,19 +30,16 @@ int main()
     printf("Parent: My pid is %d; now spawning a child after setting the shared integer to 0\n", getpid());
     
     shared = shmat(shm_ID, NULL, 0);
-    if( (int*)shared == (void *)-1) //have to cast of get an error
+    if ( (int*)shared == (void *)-1) //have to cast of get an error
         printf("Damn: %s", strerror(*shared) );
 
     *shared = 0; //set it to zero
 
     //NOW FORK A CHILD AND SHARE SOME MEMORY 
     pid = fork();
-    if(pid < 0)  //failed
-    {
+    if (pid < 0)  //failed
         printf("FAILED FORK! NO CHILD CREATED!\n");
-    }
-    else if (pid > 0) //parent execution
-    {
+    else if (pid > 0) { //parent execution
         printf("Parent: My pid is %d, spawned a child with pid of %d; please enter an integer to be stored in shared memory:\n", getpid(), pid);
         scanf("%d", shared);
         //printf("parent: shared int set to %d\n", *shared);
@@ -50,8 +47,7 @@ int main()
         printf("Parent: the child has re-zeroed our shared integer\n");
         printf("Parent: Child terminated; parent successfully removed segment whose ID # was %d\n", shm_ID);
     }
-    else // pid == 0 child execution
-    {
+    else  { // pid == 0 child execution
         printf("Child: My pid is %d, my parent's pid is %d; the shared integer value is currently 0; I'll spin until it's NOT 0\n", getpid(), getppid());
         while(*shared == 0) ; //spin loop
         printf("Child: The value in the shared integer is now %d; I'll set it back to 0\n", *shared);
