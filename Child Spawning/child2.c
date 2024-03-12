@@ -1,5 +1,5 @@
 /* (c) Gabby Strevay 2023
- * Additional program for hw1.c
+ * Additional program for childSpawning.c
 */
 #include <stdio.h>
 #include <unistd.h>
