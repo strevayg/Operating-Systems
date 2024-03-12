@@ -3,8 +3,8 @@ Child spawning is contained in this subdirectory
 childSpawning.c
   - Program that spawns (forks) three children without having the parent wait for child compltion before the parent continues to maximize concurrency.
       -  child #2 uses an execv system service call to replace the program in its text section with a seperate program
-  - Renamed the executable file for the 2nd child "child2.c" with the linux command
-  - gcc child2.c -o child2.exe
+  - Renamed the executable file for the 2nd child "child2.c" with the linux command:
+      - gcc child2.c -o child2.exe
 
 processCom.c 
   - Program portraying inter-process communication via shared memory
