@@ -28,9 +28,7 @@ int main()
     
     threadreturn= pthread_create(&tid, NULL, threadfunct, NULL);
     if (threadreturn == 0) //returns 0 if successful 
-    {
         printf("Main: Successfully created a thread with TID of %lu\n", tid);
-    }
     else //it returns an error number
         printf("Damn: %s", strerror(threadreturn) );
     printf("Main: Enter a non-zero integer so that the other thread can get out of its spin loop:\n");
