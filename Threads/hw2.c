@@ -1,4 +1,4 @@
-/* (c) Gabby Strevay 
+/* (c) Gabby Strevay 2023
  *  Small program to portray thread creation and sharing of a resource (a character)
 */
 #include <stdio.h>
